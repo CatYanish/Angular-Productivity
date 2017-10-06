@@ -1,0 +1,9 @@
+$awesome-blue: #2196F3;
+
+a {
+  background-color: $awesome-blue;
+}
+
+a:hover {
+  background-color: darken($awesome-blue,10%);
+}
