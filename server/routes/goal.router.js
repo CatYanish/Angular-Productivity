@@ -4,6 +4,43 @@ var passport = require('passport');
 var path = require('path');
 var pool = require('../modules/pool.js');
 
+
+
+router.get('/get/', function(req, res) {
+  if(req.isAuthenticated()) {
+    // send back user object from database
+    console.log('this is the reqUserId', req.user.id);
+    var id = req.user.id;
+    pool.connect(function(errorConnectingToDatabase, db, done){
+      if(errorConnectingToDatabase) {
+        console.log('Error connecting to the database.');
+        res.sendStatus(500);
+      } else {
+        var queryText = 'SELECT * FROM "user_goals" WHERE "user_id" = id;';
+        // errorMakingQuery is a bool, result is an object
+        db.query(queryText, function(errorMakingQuery, result){
+          done();
+          if(errorMakingQuery) {
+            console.log('Attempted to query with', queryText);
+            console.log('Error making query');
+            res.sendStatus(500);
+          } else {
+            console.log(result.rows);
+            // Send back the results
+            res.send({goals: result.rows});
+          }
+        }); // end query
+      } // end if
+    }); // end pool
+  } else { //this is the else for reqAuth
+    // failure best handled on the server. do redirect here.
+    console.log('not logged in');
+    // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
+    res.send(false);
+  }
+})
+
+
 router.post('/add/', function(req, res) {
   if(req.isAuthenticated()) {
     // send back user object from database

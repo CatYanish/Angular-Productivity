@@ -17,4 +17,17 @@ myApp.controller('UserController', function(UserService, $http) {
     })
   } //end addGoal function
 
+
+
+
+vm.getGoal = function() {
+  console.log('get goal function called');
+  $http.get('goal/get').then(function(response) {
+    console.log('this is the stuff in the database at the moment', response);
+  })
+}
+
+vm.getGoal();
+
+
 }); //end controller
