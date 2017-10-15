@@ -4,11 +4,13 @@ myApp.controller('UserController', function(UserService, $http) {
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
 
-
+  vm.prompt;
   vm.newGoal = {
 
   }
-
+  var enterGoalPrompt = ["Write a Goal You'd Like to Accomplish", "What Goal Would You Like to Track?", "What Would You Like to Work On?",
+  "Enter One of Your Aspirations To Get Started", "What Would You Like to Achieve?", "Add One of Your Goals to Track Your Progress"];
+  choosePrompt();
 
   vm.addGoal = function() {
     console.log("new goal", vm.newGoal);
@@ -28,6 +30,11 @@ vm.getGoal = function() {
 }
 
 vm.getGoal();
+
+
+function choosePrompt() {
+   vm.prompt = enterGoalPrompt[Math.floor(Math.random()* enterGoalPrompt.length)];
+}
 
 
 }); //end controller

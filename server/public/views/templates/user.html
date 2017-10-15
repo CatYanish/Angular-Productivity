@@ -4,6 +4,7 @@
   <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
   <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
 
+  <h2>{{uc.prompt}}</h2>
   <div class="">
     <input type="text" name="" ng-model="uc.newGoal.name">
     <button type="button" ng-click="uc.addGoal()">Add</button>
