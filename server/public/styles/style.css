@@ -1,3 +1,27 @@
+html, body{
+  height: 100%;
+}
+
+body {
+			background-image: url(http://ppcdn.500px.org/75319705/1991f76c0c6a91ae1d23eb94ac5c7a9f7e79c480/2048.jpg) ;
+			background-position: center center;
+			background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+			background-color: #999;
+}
+
+
+div, body{
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+}
+
 a {
   background-color: #2196F3; }
 
