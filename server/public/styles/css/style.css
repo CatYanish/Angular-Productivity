@@ -1,0 +1,29 @@
+html, body {
+  height: 100%; }
+
+body {
+  background-image: url("http://www.planwallpaper.com/static/images/47841531-free-desktop-wallpaper_6VFOK69.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #999; }
+
+div, body {
+  margin: 0;
+  padding: 0; }
+
+.wrapper {
+  height: 100%;
+  width: 100%; }
+
+a {
+  background-color: #2196F3; }
+
+a:hover {
+  background-color: #0c7cd5; }
+
+.small-blue-square {
+  width: 20px;
+  height: 20px;
+  background-color: blue; }

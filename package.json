@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "nodemon server/server.js",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "scss": "node-sass --watch server/public/styles/scss -o server/public/styles/css"
   },
-  "author": "Scott Bromander, Kris Szafranski",
+  "author": "Catherine Yanish",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.4",
@@ -18,6 +19,7 @@
     "express": "^4.13.1",
     "express-session": "^1.13.0",
     "jquery": "^2.1.4",
+    "node-sass": "^4.5.3",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
     "path": "^0.11.14",

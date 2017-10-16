@@ -1,0 +1,51 @@
+
+html, body{
+  height: 100%;
+}
+
+$images: ('http://ppcdn.500px.org/75319705/1991f76c0c6a91ae1d23eb94ac5c7a9f7e79c480/2048.jpg', 'http://eskipaper.com/images/free-nature-backgrounds-1.jpg',
+'http://www.planwallpaper.com/static/images/47841531-free-desktop-wallpaper_6VFOK69.jpg' );
+
+$img: nth($images, random(length($images)));
+
+body {
+			background-image: url($img) ;
+			background-position: center center;
+			background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+			background-color: #999;
+}
+
+
+div, body{
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+$awesome-blue: #2196F3;
+
+a {
+  background-color: $awesome-blue;
+}
+
+a:hover {
+  background-color: darken($awesome-blue,10%);
+}
+
+
+@mixin square($size, $color) {
+  width: $size;
+  height: $size;
+  background-color: $color;
+}
+
+
+.small-blue-square {
+  @include square(20px, rgb(0,0,255));
+}
