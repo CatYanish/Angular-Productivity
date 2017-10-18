@@ -9,4 +9,8 @@
     <input type="text" name="" ng-model="uc.newGoal.name">
     <button type="button" ng-click="uc.addGoal()">Add</button>
   </div>
+  <div ng-repeat="oneGoal in uc.existingGoal">
+      <h3>This is a goal: {{oneGoal.goal}}</h3>
+  </div>
+
 </div>

@@ -7,10 +7,11 @@ html, body{
 $images: ('http://ppcdn.500px.org/75319705/1991f76c0c6a91ae1d23eb94ac5c7a9f7e79c480/2048.jpg', 'http://eskipaper.com/images/free-nature-backgrounds-1.jpg',
 'http://www.planwallpaper.com/static/images/47841531-free-desktop-wallpaper_6VFOK69.jpg' );
 
+
 $img: nth($images, random(length($images)));
 
 body {
-			background-image: url($img) ;
+			background-image: url($img);
 			background-position: center center;
 			background-repeat:  no-repeat;
 			background-attachment: fixed;

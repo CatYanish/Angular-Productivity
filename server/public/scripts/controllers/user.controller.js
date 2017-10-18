@@ -8,6 +8,9 @@ myApp.controller('UserController', function(UserService, $http) {
   vm.newGoal = {
 
   }
+
+  vm.existingGoal;
+
   var enterGoalPrompt = ["Write a Goal You'd Like to Accomplish", "What Goal Would You Like to Track?", "What Would You Like to Work On?",
   "Enter One of Your Aspirations To Get Started", "What Would You Like to Achieve?", "Add One of Your Goals to Track Your Progress"];
   choosePrompt();
@@ -25,7 +28,9 @@ myApp.controller('UserController', function(UserService, $http) {
 vm.getGoal = function() {
   console.log('get goal function called');
   $http.get('goal/get').then(function(response) {
-    console.log('this is the stuff in the database at the moment', response);
+    console.log('this is the stuff in the database at the moment', response.data.goals);
+    vm.existingGoal = response.data.goals;
+    console.log('this is existing goal', vm.existingGoal);
   })
 }
 
