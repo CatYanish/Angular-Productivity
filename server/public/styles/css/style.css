@@ -3,7 +3,7 @@ html, body {
   color: white; }
 
 body {
-  background-image: url("http://www.planwallpaper.com/static/images/47841531-free-desktop-wallpaper_6VFOK69.jpg");
+  background-image: url("http://eskipaper.com/images/free-nature-backgrounds-1.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -13,6 +13,9 @@ body {
 div, body {
   margin: 0;
   padding: 0; }
+
+.container {
+  background-color: indigo; }
 
 .wrapper {
   height: 100%;
