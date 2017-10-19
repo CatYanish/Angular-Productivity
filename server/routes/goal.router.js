@@ -4,19 +4,21 @@ var passport = require('passport');
 var path = require('path');
 var pool = require('../modules/pool.js');
 
-
+var idOfLoggedOnUser;
 
 router.get('/get/', function(req, res) {
   if(req.isAuthenticated()) {
     // send back user object from database
     console.log('this is the reqUserId', req.user.id);
-    var id = req.user.id;
+    var idOfLoggedOnUser = req.user.id;
+    console.log('idOfLoggedOnUser', idOfLoggedOnUser);
     pool.connect(function(errorConnectingToDatabase, db, done){
       if(errorConnectingToDatabase) {
         console.log('Error connecting to the database.');
         res.sendStatus(500);
       } else {
-        var queryText = 'SELECT * FROM "user_goals" WHERE "user_id" = id;';
+        console.log('checking scope of idOfLoggedOnUser', idOfLoggedOnUser);
+        var queryText = 'SELECT * FROM "user_goals" WHERE "user_id" = ' + idOfLoggedOnUser;
         // errorMakingQuery is a bool, result is an object
         db.query(queryText, function(errorMakingQuery, result){
           done();
