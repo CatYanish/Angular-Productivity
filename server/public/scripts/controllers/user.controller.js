@@ -11,6 +11,8 @@ myApp.controller('UserController', function(UserService, $http) {
 
   vm.existingGoal;
 
+  vm.date = new Date();
+
   var enterGoalPrompt = ["Write a Goal You'd Like to Accomplish", "What Goal Would You Like to Track?", "What Would You Like to Work On?",
   "Enter One of Your Aspirations To Get Started", "What Would You Like to Achieve?", "Add One of Your Goals to Track Your Progress"];
   choosePrompt();
