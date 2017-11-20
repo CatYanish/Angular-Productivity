@@ -1,69 +1,27 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
-
-  <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
-  <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
-
   <h2>{{uc.prompt}}</h2>
   <div class="">
     <input type="text" name="" ng-model="uc.newGoal.name">
     <button type="button" ng-click="uc.addGoal()">Add</button>
   </div>
   <div ng-repeat="oneGoal in uc.existingGoal">
-      <h3>This is a goal: {{oneGoal.goal}}</h3>
+      <h3 class="individualGoalOnList">This is a goal: {{oneGoal.goal}}</h3>
   </div>
   <div>
-    <h4>Mark Goal Completed for {{uc.date | date : "fullDate"  }}</h4>
+    <h4>Mark Goal Completed for {{uc.date |  date : "mediumDate" }}</h4>
     <div class="col-lg-6">
       <div class="input-group">
         <span class="input-group-addon">
           <input type="checkbox" aria-label="Checkbox for following text input">
         </span>
-        <input type="text" class="form-control" aria-label="Text input with checkbox">
+
       </div>
     </div>
 
 
   </div>
 
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="input-group">
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-secondary">Action</button>
-          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div role="separator" class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-        </div>
-        <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="input-group">
-        <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-secondary">Action</button>
-          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div role="separator" class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
 </div>
