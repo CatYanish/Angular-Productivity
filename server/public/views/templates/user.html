@@ -5,23 +5,20 @@
     <input type="text" name="" ng-model="uc.newGoal.name">
     <button type="button" ng-click="uc.addGoal()">Add</button>
   </div>
+  <h4>Mark Goal Completed or Not Completed for {{uc.date |  date : "mediumDate" }}</h4>
   <div ng-repeat="oneGoal in uc.existingGoal">
-      <h3 class="individualGoalOnList">This is a goal: {{oneGoal.goal}}</h3>
-  </div>
-  <div>
-    <h4>Mark Goal Completed for {{uc.date |  date : "mediumDate" }}</h4>
+    <h3 class="individualGoalOnList">{{oneGoal.goal}}</h3>
     <div class="col-lg-6">
       <div class="input-group">
         <span class="input-group-addon">
-          <input type="checkbox" aria-label="Checkbox for following text input">
+          <input ng-click="uc.goalCompletedToggle(oneGoal.goal)" type="checkbox" aria-label="Checkbox for following text input">
         </span>
-
       </div>
     </div>
-
-
   </div>
+  <div>
 
-
+    <button ng-click="uc.completedToday()">DONE!</button>
+  </div>
 
 </div>

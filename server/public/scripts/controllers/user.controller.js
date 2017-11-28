@@ -9,6 +9,7 @@ myApp.controller('UserController', function(UserService, $http) {
 
   }
 
+  vm.goalsCompletedToday = false;
   vm.existingGoal;
 
   vm.date = new Date();
@@ -41,6 +42,18 @@ vm.getGoal();
 
 function choosePrompt() {
    vm.prompt = enterGoalPrompt[Math.floor(Math.random()* enterGoalPrompt.length)];
+}
+
+vm.completedToday = function() {
+  console.log('CompletedTodaycalled');
+  $http.post('goal/date', vm.goalsCompletedToday).then(function(response) {
+    console.log('response', response);
+  })
+}
+
+vm.goalCompletedToggle = function() {
+  vm.goalsCompletedToday = !vm.goalsCompletedToday;
+  console.log(vm.goalsCompletedToday);
 }
 
 
