@@ -6,7 +6,9 @@
   "scripts": {
     "test": "nodemon server/server.js",
     "start": "node server/server.js",
-    "scss": "node-sass --watch server/public/styles/scss -o server/public/styles/css"
+    "scss": "node-sass --watch server/public/styles/scss -o server/public/styles/css",
+    "build": "babel server -d lib"
+
   },
   "author": "Catherine Yanish",
   "license": "ISC",
@@ -24,5 +26,9 @@
     "passport-local": "^1.0.0",
     "path": "^0.11.14",
     "pg": "^7.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
   }
 }
