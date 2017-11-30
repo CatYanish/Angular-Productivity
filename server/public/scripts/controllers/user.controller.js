@@ -9,7 +9,9 @@ myApp.controller('UserController', function(UserService, $http) {
 
   }
 
-  vm.goalsCompletedToday = false;
+  vm.goalsCompletedToday = {
+
+  };
   vm.existingGoal;
 
   vm.date = new Date();
@@ -51,9 +53,10 @@ vm.completedToday = function() {
   })
 }
 
-vm.goalCompletedToggle = function() {
-  vm.goalsCompletedToday = !vm.goalsCompletedToday;
-  console.log(vm.goalsCompletedToday);
+vm.goalCompletedToggle = function(oneGoal) {
+  console.log('now passing back the whole object', oneGoal);
+  oneGoal.goalsCompletedToday = !oneGoal.goalsCompletedToday;
+  console.log(oneGoal.goalsCompletedToday);
 }
 
 
