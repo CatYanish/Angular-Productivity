@@ -6,7 +6,7 @@
     <button type="button" ng-click="uc.addGoal()">Add</button>
   </div>
   <h4>Mark Goal Completed or Not Completed for {{uc.date |  date : "mediumDate" }}</h4>
-  <div ng-repeat="oneGoal in uc.existingGoal">
+  <div ng-repeat="oneGoal in uc.currentGoalsList">
     <h3 class="individualGoalOnList">{{oneGoal.goal}}</h3>
     <div class="col-lg-6">
       <div class="input-group">

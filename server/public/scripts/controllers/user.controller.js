@@ -11,7 +11,7 @@ myApp.controller('UserController', function(UserService, $http) {
 
   let goalsCompletedToday = [];
 
-  vm.existingGoal;
+  vm.currentGoalsList;
 
   vm.date = new Date();
 
@@ -35,8 +35,8 @@ vm.getGoal = function() {
   console.log('get goal function called');
   $http.get('goal/get').then(function(response) {
     console.log('this is the stuff in the database at the moment', response.data.goals);
-    vm.existingGoal = response.data.goals;
-    console.log('this is existing goal', vm.existingGoal);
+    vm.currentGoalsList = response.data.goals;
+    console.log('this is existing goal', vm.currentGoalsList);
   })
 }
 
@@ -62,10 +62,20 @@ vm.markGoalCompletedToggle = function(oneGoal) {
       oneGoal.todayDate = new Date();
       console.log(oneGoal.todayDate);
       console.log('this is oneGoal', oneGoal);
-      $http.post('goal/date', oneGoal).then(function(response) {
-        console.log('response', response);
-      })
+
+      for (var i = 0; i <   vm.currentGoalsList.length; i++) {
+        console.log('this is the currentGoalsList.id at index', vm.currentGoalsList[i].id);
+        if (vm.currentGoalsList[i].id === oneGoal.id ) {
+          console.log('WE HAVE A MATCH!');
+        }
+      }
+
     }
+
+
+    // $http.post('goal/date', oneGoal).then(function(response) {
+    //   console.log('response', response);
+    // })
 
 
 }); //end controller
