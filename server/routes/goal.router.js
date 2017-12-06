@@ -84,4 +84,46 @@ router.post('/add/', function(req, res) {
 
 
 
+
+router.post('/date/', function(req, res) {
+  if(req.isAuthenticated()) {
+    // send back user object from database
+    console.log('this is the reqUserId', req.user.id);
+    var dateGoal = req.body;
+    console.log('this is dateGoal', dateGoal);
+    // errorConnecting is bool, db is what we query against,
+    // done is a function that we call when we're done
+    pool.connect(function(errorConnectingToDatabase, db, done){
+      if(errorConnectingToDatabase) {
+        console.log('Error connecting to the database.');
+        res.sendStatus(500);
+      } else {
+        // We connected to the database!!!
+        // Now we're going to GET things from the db
+        var queryText = 'INSERT INTO "days_completed" ("goal_id", "date")' +
+        'VALUES ($1, $2);';
+
+        // errorMakingQuery is a bool, result is an object
+        db.query(queryText, [dateGoal.id, dateGoal.todayDate], function(errorMakingQuery, result){
+          done();
+          if(errorMakingQuery) {
+            console.log('Attempted to query with', queryText);
+            console.log('Error making query');
+            res.sendStatus(500);
+          } else {
+            res.sendStatus(200);
+          }
+        }); // end query
+      } // end if
+    }); // end pool
+  } else { //this is the else for reqAuth
+    // failure best handled on the server. do redirect here.
+    console.log('not logged in');
+    // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
+    res.send(false);
+  }
+}); //end of post function
+
+
+
 module.exports = router;
