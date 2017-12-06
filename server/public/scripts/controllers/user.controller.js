@@ -64,12 +64,13 @@ vm.markGoalCompletedToggle = function(oneGoal) {
 
 vm.completedToday = function(oneGoal) {
       console.log('this is the current status of everything in vm.currentGoalsList', vm.currentGoalsList);
+      $http.post('goal/date', vm.currentGoalsList).then(function(response) {
+        console.log('response', response);
+      })
   }
 
 
-    // $http.post('goal/date', oneGoal).then(function(response) {
-    //   console.log('response', response);
-    // })
+
 
 
 }); //end controller

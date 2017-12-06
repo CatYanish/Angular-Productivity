@@ -90,7 +90,7 @@ router.post('/date/', function(req, res) {
     // send back user object from database
     console.log('this is the reqUserId', req.user.id);
     var dateGoal = req.body;
-    console.log('this is dateGoal', dateGoal);
+    // console.log('this is dateGoal', dateGoal);
     // errorConnecting is bool, db is what we query against,
     // done is a function that we call when we're done
     pool.connect(function(errorConnectingToDatabase, db, done){
@@ -100,12 +100,15 @@ router.post('/date/', function(req, res) {
       } else {
         // We connected to the database!!!
         // Now we're going to GET things from the db
-        var queryText = 'INSERT INTO "days_completed" ("goal_id", "date")' +
-        'VALUES ($1, $2);';
 
+        for (var i = 0; i < dateGoal.length; i++) {
+          console.log('this is dateGoal at index i', dateGoal[i]);
+          var queryText = 'INSERT INTO "days_completed" ("goal_id", "date")' +
+          'VALUES ($1, $2);';
         // errorMakingQuery is a bool, result is an object
-        db.query(queryText, [dateGoal.id, dateGoal.todayDate], function(errorMakingQuery, result){
+        db.query(queryText, [dateGoal[i].id, dateGoal[i].todayDate], function(errorMakingQuery, result){
           done();
+            } // end for loop
           if(errorMakingQuery) {
             console.log('Attempted to query with', queryText);
             console.log('Error making query');
@@ -114,7 +117,7 @@ router.post('/date/', function(req, res) {
             res.sendStatus(200);
           }
         }); // end query
-      } // end if
+       } // end if
     }); // end pool
   } else { //this is the else for reqAuth
     // failure best handled on the server. do redirect here.
