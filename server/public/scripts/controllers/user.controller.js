@@ -47,30 +47,24 @@ function choosePrompt() {
    vm.prompt = enterGoalPrompt[Math.floor(Math.random()* enterGoalPrompt.length)];
 }
 
-// vm.completedToday = function(oneGoal) {
-//   console.log('CompletedTodaycalled');
-//   console.log('dailyGoalItems', vm.dailyGoalItems);
-//   console.log('oneGoal', oneGoal);
-//   // $http.post('goal/date', vm.goalsCompletedToday).then(function(response) {
-//   //   console.log('response', response);
-//   // })
-// }
 
 vm.markGoalCompletedToggle = function(oneGoal) {
-      oneGoal.goalsCompletedToday = !oneGoal.goalsCompletedToday;
-      console.log(oneGoal.goalsCompletedToday);
-      oneGoal.todayDate = new Date();
-      console.log(oneGoal.todayDate);
-      console.log('this is oneGoal', oneGoal);
-
       for (var i = 0; i <   vm.currentGoalsList.length; i++) {
         console.log('this is the currentGoalsList.id at index', vm.currentGoalsList[i].id);
         if (vm.currentGoalsList[i].id === oneGoal.id ) {
           console.log('WE HAVE A MATCH!');
+          vm.currentGoalsList[i].goalsCompletedToday = !vm.currentGoalsList[i].goalsCompletedToday;
+          console.log(vm.currentGoalsList[i].goalsCompletedToday);
+          vm.currentGoalsList[i].todayDate = new Date();
+          console.log(vm.currentGoalsList[i].todayDate);
+          console.log('this is oneGoal',vm.currentGoalsList[i]);
         }
       }
-
     }
+
+vm.completedToday = function(oneGoal) {
+      console.log('this is the current status of everything in vm.currentGoalsList', vm.currentGoalsList);
+  }
 
 
     // $http.post('goal/date', oneGoal).then(function(response) {
