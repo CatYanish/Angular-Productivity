@@ -100,15 +100,20 @@ router.post('/date/', function(req, res) {
       } else {
         // We connected to the database!!!
         // Now we're going to GET things from the db
-
+        var insertGoalString = '';
         for (var i = 0; i < dateGoal.length; i++) {
           console.log('this is dateGoal at index i', dateGoal[i]);
+          insertGoalString = insertGoalString + dateGoal[i] .id + ', ' + dateGoal[i].todayDate;
+          console.log('this is insertGoalString', insertGoalString);
+          } // end for loop
+
           var queryText = 'INSERT INTO "days_completed" ("goal_id", "date")' +
-          'VALUES ($1, $2);';
+          'VALUES ($1);';
         // errorMakingQuery is a bool, result is an object
-        db.query(queryText, [dateGoal[i].id, dateGoal[i].todayDate], function(errorMakingQuery, result){
+        db.query(queryText, [insertGoalString], function(errorMakingQuery, result){
+
           done();
-            } // end for loop
+
           if(errorMakingQuery) {
             console.log('Attempted to query with', queryText);
             console.log('Error making query');
@@ -117,6 +122,7 @@ router.post('/date/', function(req, res) {
             res.sendStatus(200);
           }
         }); // end query
+
        } // end if
     }); // end pool
   } else { //this is the else for reqAuth
